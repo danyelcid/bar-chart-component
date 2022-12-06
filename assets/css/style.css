@@ -70,7 +70,7 @@ body{
     border-radius: 1.125rem;
 }
 .subtitle{
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: var(--font-bold);
 }
 .card-body hr{
