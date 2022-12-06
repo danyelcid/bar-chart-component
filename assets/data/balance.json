@@ -1,12 +1,11 @@
 {   "interval": "Last 7 days",
-    "values": {
-        "mon": 69.33,
-        "tue": 34.57,
-        "wed": 40.89,
-        "thu": 52.05,
-        "fri": 93.71,
-        "sat": 91.15,
-        "sun": 21.91
-    }
-
+    "days": [
+        { "name": "mon", "value": 69.33 },
+        { "name": "tue", "value": 34.57 },
+        { "name": "wed", "value": 40.89 },
+        { "name": "thu", "value": 52.05 },
+        { "name": "fri", "value": 93.71 },
+        { "name": "sat", "value": 91.15 },
+        { "name": "sun", "value": 21.91 }
+    ]
 }
