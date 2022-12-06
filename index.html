@@ -20,12 +20,12 @@
   <main>
     <div class="card">
       <div class="card-header">
-        <h1>My balance</h1> 
+        <h1 class="title">My balance</h1> 
         <p class="total-balance"> $921.48</p>
         <img class="logo" src="assets/images/logo.svg" alt="logo" >
       </div>
       <div class="card-body">
-        <p>Spending - <span id="interval">Last 5 days</span></p>  
+        <p class="subtitle">Spending - <span id="interval">Last 5 days</span></p>  
         <div class="bar-chart">
           <div class="bar"><div class="mark"></div></div>
           <div class="bar"><div class="mark"></div></div>
@@ -35,18 +35,20 @@
           <div class="bar"><div class="mark"></div></div>
           <div class="bar"><div class="mark"></div></div>
         </div>
+        <hr>
+        <div class="card-sumary">
+          <p>
+            <span id="sumary-title">Total this month</span> 
+          </p>
+          <p>
+            <span id="sumary-total">$478.33</span> 
+            <span id="sumary-percent"></span> +2.4%
+            <span id="sumary-interval"></span> from last month
+          </p>
+  
+        </div>
       </div>
-      <div class="card-footer">
-        <p>
-          <span id="sumary-title">Total this month</span> 
-          <span id="sumary-total">$478.33</span> 
-        </p>
-        <p>
-          <span id="sumary-percent"></span> +2.4%
-          <span id="sumary-interval"></span> from last month
-        </p>
 
-      </div>
     </div>
   </main>
   
@@ -59,34 +61,46 @@
   <script>
     $(document).ready(function () {
 
+      const today =new Date().toDateString().toLowerCase().substr(0,3)
+      const bars = $('.bar')
+      const marks = $('.mark')
+
       // Gets info fron the server in JSON
       $.getJSON('./assets/data/balance.json', function(resp) {
           $('#interval').text(resp.interval)
 
-          const bars = $('.bar')
-          const marks = $('.mark')
-          
-          let max = 0
+          let maxValue = 0
           resp.days.forEach(day => {
-            if (day.value > max) {
-              max = day.value
+            if (day.value > maxValue) {
+              maxValue = day.value
             }
           });
+          let totalBalance = resp.days.reduce((current, day) =>{
+            return current + day.value
+          },0)
+          const l = totalBalance.toString().split('.')
+          l[1] = l[1].substr(0,2)
+          let sumary = l.join('.')
+
+          $('#sumary-total').text(sumary)
 
           for (let i = 0; i < resp.days.length; i++) {
             const day = resp.days[i];
-            $(bars[i]).attr('data-name',day.name)
-            $(marks[i]).attr('data-value',day.value)
+            $(bars[i]).attr('data-name', day.name)
+            $(marks[i]).attr('data-value', '$ ' + day.value)
 
-            let height = day.value/max*100
+            if(day.name.toLowerCase() === today){
+              $(marks[i]).addClass('today')
+            }
 
-            $(marks[i]).delay(50*i).animate({
+            let height = day.value / maxValue * 100
+
+            $(marks[i]).delay( 50 * i ).animate ({
               height: `${height}%`
-            }, 300, function() {
-              // Animation complete.
-            });
+            }, 300 );
           }
       }); 
+      
     });
     
   </script>
