@@ -61,7 +61,7 @@ body{
 }
 
 .card-header .total-balance{
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: var(--font-bold);
 }
 .card-body{
@@ -79,7 +79,7 @@ body{
 }
 .bar-chart{
     width: 100%;
-    min-height: 240px;
+    min-height: 260px;
     padding-block: 3rem;
     display: grid;
     grid-template-columns: repeat(7, 3rem);
@@ -135,7 +135,7 @@ body{
 }
 .card-sumary .sumary{
     position: relative;
-    font-size: 2.25rem;
+    font-size: 3rem;
     font-weight: var(--font-bold);
     display: block;
 }
