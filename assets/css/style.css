@@ -141,7 +141,7 @@ body{
 }
 p > span#sumary-percent{
     position: absolute;
-    top: .25rem;
+    top: .5rem;
     right: 0;
     font-size: 1rem;
 
@@ -149,7 +149,7 @@ p > span#sumary-percent{
 p > span#sumary-interval{
     position: absolute;
     right: 0;
-    bottom: .25rem;
+    bottom: .5rem;
     font-size: 1rem;
     font-weight: var(--font-regular);
 

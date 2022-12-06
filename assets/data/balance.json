@@ -1,8 +1,8 @@
 {   "interval": "Last 7 days",
     "days": [
         { "name": "mon", "value": 69.33 },
-        { "name": "tue", "value": 34.57 },
-        { "name": "wed", "value": 40.89 },
+        { "name": "tue", "value": 111.57 },
+        { "name": "wed", "value": 152.89 },
         { "name": "thu", "value": 52.05 },
         { "name": "fri", "value": 113.00 },
         { "name": "sat", "value": 91.15 },
