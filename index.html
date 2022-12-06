@@ -11,10 +11,7 @@
   <title>Frontend Mentor | Expenses chart component</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; position: fixed; bottom: 1rem; width: 100%;}
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+
 </head>
 <body>
   <main>
@@ -40,10 +37,10 @@
           <p>
             <span id="sumary-title">Total this month</span> 
           </p>
-          <p>
+          <p class="sumary">
             <span id="sumary-total">$478.33</span> 
-            <span id="sumary-percent"></span> +2.4%
-            <span id="sumary-interval"></span> from last month
+            <span id="sumary-percent"> +2.4%</span>
+            <span id="sumary-interval">from last month</span> 
           </p>
   
         </div>
@@ -82,12 +79,12 @@
           l[1] = l[1].substr(0,2)
           let sumary = l.join('.')
 
-          $('#sumary-total').text(sumary)
+          $('#sumary-total').text('$ '+ sumary)
 
           for (let i = 0; i < resp.days.length; i++) {
             const day = resp.days[i];
             $(bars[i]).attr('data-name', day.name)
-            $(marks[i]).attr('data-value', '$ ' + day.value)
+            $(marks[i]).attr('data-value', '$ ' + Number(day.value).toFixed(2) )
 
             if(day.name.toLowerCase() === today){
               $(marks[i]).addClass('today')
